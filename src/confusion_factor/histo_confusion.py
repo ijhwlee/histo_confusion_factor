@@ -176,6 +176,7 @@ def calc_confusion_factors(names, bins, field_name):
     data_items = []
     for file_name in names:
         data = read_data(file_name)
+        #print("file_name = {0}, data_mean = {1}".format(file_name, np.mean(data)))
         data_items.append(data)
 
     for idx in range(len(data_items)):
