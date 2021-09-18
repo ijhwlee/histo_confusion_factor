@@ -171,3 +171,14 @@ def integrate_diff_histo(data1, data2, bin_number, field_name):
     confusion = integrate.simpson(min_values, merged_bins)
     #print('confusion = {0}'.format(confusion))
     return confusion
+def calc_confusion_factors(names, bins, field_name):
+    cf_list = []
+    data_items = []
+    for file_name in names:
+        data = read_data(file_name)
+        data_items.append(data)
+
+    for idx in range(len(data_items)):
+        cf = integrate_diff_histo(data_items[0], data_items[idx], bins, field_name)
+        cf_list.append(cf)
+    return cf_list
