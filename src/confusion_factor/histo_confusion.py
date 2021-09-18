@@ -8,7 +8,7 @@ import scipy.integrate as integrate
 def read_data(file_name):
     f = open(file_name, 'r')
     line1 = f.readline()
-    names1 = line1.replace('#', ' ').split()
+    #names1 = line1.replace('#', ' ').split()
     data_read = pd.read_csv(f, sep="\s+", names=line1.replace('#', ' ').split(), skiprows=0)
     return data_read
 
