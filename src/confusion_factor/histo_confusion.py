@@ -24,7 +24,7 @@ def draw_histo(data, field_name, title):
     print("mu = {0}, sigma = {1}".format(mu_v1, sigma_v1))
     return ax0
 
-def draw_histo_multi(data_items, field_name, titles, title):
+def draw_histo_multi(data_items, field_name, titles, title, legend=True):
     fig, ax0 = plt.subplots(ncols=1, nrows=1)
     idx = 0
     for data in data_items:
@@ -33,7 +33,8 @@ def draw_histo_multi(data_items, field_name, titles, title):
         best_fit_line_v1 = stats.norm.pdf(bins_v1, mu_v1, sigma_v1)
         ax0.plot(bins_v1, best_fit_line_v1, label=titles[idx])
         idx=idx+1
-        ax0.legend()
+        if legend:
+            ax0.legend()
     plt.title(title)
     plt.show()
 
@@ -50,7 +51,7 @@ def draw_histo_center(data, field_name, title):
     print("mu = {0}, sigma = {1}".format(mu, sigma))
     return ax0
 
-def draw_histo_center_multi(data_items, field_name, titles, title):
+def draw_histo_center_multi(data_items, field_name, titles, title, legend = True):
     fig, ax0 = plt.subplots(ncols=1, nrows=1)
     idx = 0
     for data in data_items:
@@ -59,7 +60,8 @@ def draw_histo_center_multi(data_items, field_name, titles, title):
         bin_centers = 0.5*(bins[1:] + bins[:-1])
         pdf = stats.norm.pdf(x = bin_centers, loc=mu, scale=sigma)
         ax0.plot(bin_centers, pdf, label=titles[idx])
-        ax0.legend()
+        if legend:
+            ax0.legend()
         idx += 1
     plt.title(title)
     plt.show()
